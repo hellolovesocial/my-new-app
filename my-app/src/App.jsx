@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import './App.css';
 import CountUp from './CountUp';
 import Post from './Post';
 import List from './List';
+import MyForm from './MyForm';
 
 class App extends Component {
   constructor(props, context) {
@@ -58,13 +59,14 @@ class App extends Component {
           countUp={this.countUp}
         />
         <Post 
-        postvalue={this.state.postvalue}
-        postUp={this.postUp}
-        viewNum={this.state.viewNum}
-        viewText={this.state.viewText}
-        clickAction={this.clickAction}
+          postvalue={this.state.postvalue}
+          postUp={this.postUp}
+          viewNum={this.state.viewNum}
+          viewText={this.state.viewText}
+          clickAction={this.clickAction}
         />
         <List />
+        <MyForm />
       </div>
     );
   }
