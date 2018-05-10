@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
-import './App.css';
-import CountUp from './CountUp';
-import Post from './Post';
-import List from './List';
-import MyForm from './MyForm';
+import React, { Component } from 'react'
+import './App.css'
+import CountUp from './CountUp'
+import Post from './Post'
+import List from './List'
+import MyForm from './MyForm'
+import Header from './Header'
 
 class App extends Component {
   constructor(props, context) {
@@ -44,13 +44,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img
-            src="./flower.jpg" 
-            alt="FlowerLogo"
-            className="App-headerImage"
-          />
-        </header>
+        <Header />
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
@@ -67,9 +61,14 @@ class App extends Component {
         />
         <List />
         <MyForm />
+        {/* <form action="/" method="post">
+          タイトル: 
+          <input type="text" name="title" required>
+          <button type="submit">ボード作成</button>
+        </form> */}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

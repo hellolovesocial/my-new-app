@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class FormInputText extends Component {
   renderErrorText() {
-    console.log('value', this.value)
+    console.log('errvalue', this.value)
     return this.props.valid ? false : (
       <p className="invalid">項目が入力されていません。</p>
     )
@@ -34,14 +34,14 @@ class MyForm extends React.Component {
           name: 'name', 
           label: 'お名前',
           labels: 'ななな',
-          value: null, 
-          valid: null 
+          value: '', 
+          valid: '' 
         },
         address : { 
           name: 'address', 
           label: '住所', 
-          value: null, 
-          valid: null 
+          value: '', 
+          valid: '' 
         }
       },
       errFlg : true,
@@ -51,7 +51,7 @@ class MyForm extends React.Component {
   inputChk(e, fieldName) {
     const field = Object.assign({}, 
                   this.state.field);
-    let value_a = e.terget.value.trim();
+    let value_a = e.target.value.trim();
     field[fieldName] = {
       value: value_a,
       valid: value_a ? true : false
@@ -81,14 +81,18 @@ class MyForm extends React.Component {
 
     // 送信するデータをまとめる
     const sendData = Object.keys(this.state.field).map(_fieldName => {
-      return {
+      return ({
         name: _fieldName,
         value: this.state.field[_fieldName].value,
       }
+      // {this.state.field.name.value}
+      // {this.state.field.address.value}
+    )
     });
-
+    console.log('date', sendData)
+    console.log('value', this.state.value)
     // 送信処理を行う関数
-    this.props.sendForm(sendData);
+    // this.props.sendForm(sendData);
   }
 
   render(){
@@ -102,13 +106,17 @@ class MyForm extends React.Component {
           {...this.state.field.address} 
           inputChk={(e) => this.inputChk(e, 'address')} 
         />
-        <div>
           <button 
             onClick={() => this.sendForm()} 
             disabled={this.state.errFlg}
           >
             送信する
           </button>
+        <div>
+          <ul>
+            <li>名前：{this.state.field.name.value}</li>
+            <li>住所：{this.state.field.address.value}</li>
+          </ul>
         </div>
       </div>
     )
